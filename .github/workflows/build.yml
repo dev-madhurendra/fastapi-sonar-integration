@@ -17,15 +17,11 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python }}
+          python-version: 3
       - name: Install tox and any other packages
         run: pip install tox
       - name: Run tox
         run: tox -e py
-      - name: Run tests
-        working-directory: tool_integration_service
-        run: |
-          pytest --cov=. --cov-report=xml test/
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
