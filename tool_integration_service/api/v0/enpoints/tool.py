@@ -1,5 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.orm import Session
+import os
+import sys
+
+sys.path.append(os.getcwd() + "/tool_integration_service")
 from db.db import get_db
 import model.tool as tool_model
 from typing import List

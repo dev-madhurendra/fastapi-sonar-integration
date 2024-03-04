@@ -5,6 +5,7 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   toolintegrationservice:
     if: (startsWith(github.head_ref, 'BE_') && github.event.pull_request.merged == false) || (github.event_name == 'push')
@@ -14,15 +15,33 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: 3
-      - name: Install tox and any other packages
-        run: pip install tox
-      - name: Run tox
-        run: tox -e py
+
+      - name: Install dependencies
+        run: |
+          pip install tox
+          pip install coverage
+
+      - name: Run tox for tests and coverage
+        run: |
+          tox -e py
+          # Assuming you have a tox environment setup for running tests and generating coverage reports
+          # If not, you might need to run coverage commands directly depending on your project setup
+          # Example:
+          # coverage run -m pytest
+          # coverage xml
+
+      # Ensure the coverage report is generated before running the SonarCloud Scan
+      # The SonarCloud action or command line tool will need to know where to find the coverage report
+      # This can be specified in the sonar-project.properties file or with command line arguments
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.python.coverage.reportPaths=coverage.xml
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

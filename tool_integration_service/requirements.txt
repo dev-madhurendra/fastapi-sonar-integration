@@ -8,3 +8,4 @@ httpx
 pytest
 coverage
 passlib
+pytest-cov  
