@@ -23,9 +23,9 @@ jobs:
       - name: Run tox
         run: tox -e py
       - name: Run tests
-        working-directory: package_home
+        working-directory: tool_integration_service
         run: |
-          pytest --cov=. --cov-report=xml tests/
+          pytest --cov=. --cov-report=xml test/
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
