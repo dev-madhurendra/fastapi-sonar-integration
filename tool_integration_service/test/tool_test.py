@@ -4,8 +4,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 import os
 import sys
-sys.path.append(os.getcwd())
-from db.db import Base
+sys.path.append(os.getcwd()+"/tool_integration_service")
+from sqlalchemy.ext.declarative import declarative_base
 from main import app
 
 SQLALCHEMY_DATABASE_URL = "sqlite://"
@@ -26,7 +26,7 @@ def override_get_db():
         db.close()
         
 
-Base.metadata.create_all(bind=engine)
+declarative_base().metadata.create_all(bind=engine)
 
 client = TestClient(app)
 
