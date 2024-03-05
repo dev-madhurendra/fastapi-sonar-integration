@@ -20,7 +20,7 @@ jobs:
     #       CODECOV_STATIC_TOKEN: ${{ secrets.CODECOV_STATIC_TOKEN }}
     #       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Run tests and collect coverage
-        run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
+        run: pytest --cov tool_integration_test ${{ env.CODECOV_ATS_TESTS }}
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
