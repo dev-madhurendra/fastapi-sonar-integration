@@ -14,11 +14,11 @@ jobs:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install -r tool_integration_service/requirements.txt
-      - name: Run ATS
-        uses: codecov/codecov-ats@v0
-        env:
-          CODECOV_STATIC_TOKEN: ${{ secrets.CODECOV_STATIC_TOKEN }}
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    #   - name: Run ATS
+    #     uses: codecov/codecov-ats@v0
+    #     env:
+    #       CODECOV_STATIC_TOKEN: ${{ secrets.CODECOV_STATIC_TOKEN }}
+    #       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Run tests and collect coverage
         run: pytest --cov app ${{ env.CODECOV_ATS_TESTS }}
       - name: Upload coverage reports to Codecov
