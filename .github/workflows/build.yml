@@ -25,7 +25,11 @@ jobs:
         run: |
           pip install tox
           pip install coverage
-
+      
+      - name: Run tests and coverage
+        run: |
+          pytest --cov=tool_integration_service
+          
       - name: Run tox for tests and coverage
         run: |
           tox -e py
