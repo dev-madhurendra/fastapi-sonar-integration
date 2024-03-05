@@ -42,6 +42,8 @@ jobs:
       # Ensure the coverage report is generated before running the SonarCloud Scan
       # The SonarCloud action or command line tool will need to know where to find the coverage report
       # This can be specified in the sonar-project.properties file or with command line arguments
+      - name: Override Coverage Source Path for Sonar
+        run: sed -i "s/<source>\/home\/runner\/work\/repo<\/source>/<source>\/github\/workspace<\/source>/g" /home/runner/work/fastapi-sonar-integration/coverage-reports/coverage.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
