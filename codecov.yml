@@ -11,3 +11,6 @@ cli:
   plugins:
     pycoverage:
       report_type: "json"
+ignore:
+  - "tool_integration_service/test/test_api.py"
+  - "tool_integration_service/exception/exception.py"
