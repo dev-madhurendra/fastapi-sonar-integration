@@ -1,0 +1,6 @@
+[coverage:run]
+relative_files = True
+source = tool_integration_service/
+branch = True
+[xml]
+output = coverage-reports/coverage.xml
