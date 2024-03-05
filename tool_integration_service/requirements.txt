@@ -6,7 +6,7 @@ python-dotenv
 mysql-connector-python
 httpx
 pytest
-coverage
+coverage==4.4.2
 passlib
 pytest-cov  
 tomli==2.0.1
